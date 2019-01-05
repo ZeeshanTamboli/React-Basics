@@ -2,13 +2,7 @@ import React from 'react';
 
 import styles from './Person.css';
 
-const person = props => {
-  const random = Math.random();
-
-  if (random > 0.7) {
-    throw new Error('Something went wrong');
-  }
-
+const Person = props => {
   return (
     <div className={styles.Person}>
       <p onClick={props.click}>
@@ -20,4 +14,4 @@ const person = props => {
   );
 };
 
-export default person;
+export default Person;
