@@ -1,22 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import styles from './App.css';
 import Persons from '../src/components/Persons/Persons';
 import Cockpit from '../src/components/Cockpit/Cockpit';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    console.log('[App.js] Inside constructor', props);
-  }
-
-  componentWillMount() {
-    console.log('[App.js] Inside componentWillMount');
-  }
-
-  componentDidMount() {
-    console.log('[App.js] Inside componentDidMount');
-  }
-
+class App extends PureComponent {
   state = {
     persons: [
       { id: 'asfa1', name: 'Max', age: 28 },
@@ -26,6 +13,12 @@ class App extends Component {
     otherState: 'some other value',
     showPersons: false
   };
+
+  // Lifecycle methods
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log('[App.js] in shouldComponentUpdate', nextProps, nextState);
+  //   return true;
+  // }
 
   nameChangedHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex(p => {
@@ -59,7 +52,6 @@ class App extends Component {
   };
 
   render() {
-    console.log('[App.js] Inside render()');
     let persons = null;
 
     if (this.state.showPersons) {
@@ -74,6 +66,9 @@ class App extends Component {
 
     return (
       <div className={styles.App}>
+        <button onClick={() => this.setState({ showPersons: true })}>
+          Show Persons
+        </button>
         <Cockpit
           persons={this.state.persons}
           showPersons={this.state.showPersons}
