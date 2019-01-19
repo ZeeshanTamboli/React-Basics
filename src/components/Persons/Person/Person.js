@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import withClass from '../../../hoc/withClass';
+import Auxiliary from '../../../hoc/Auxiliary';
 
 import styles from './Person.css';
 
 class Person extends Component {
   render() {
     return (
-      <div className={styles.Person}>
+      <Auxiliary>
         <p onClick={this.props.click}>
           I'm {this.props.name} and I am {this.props.age} years old!
         </p>
@@ -15,9 +17,9 @@ class Person extends Component {
           onChange={this.props.changed}
           value={this.props.name}
         />
-      </div>
+      </Auxiliary>
     );
   }
 }
 
-export default Person;
+export default withClass(Person, styles.Person);
