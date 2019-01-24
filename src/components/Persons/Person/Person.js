@@ -6,6 +6,12 @@ import Auxiliary from '../../../hoc/Auxiliary';
 import styles from './Person.css';
 
 class Person extends Component {
+  componentDidMount() {
+    if (this.props.position === 0) {
+      this.inputElement.focus();
+    }
+  }
+
   render() {
     return (
       <Auxiliary>
@@ -14,6 +20,9 @@ class Person extends Component {
         </p>
         <p>{this.props.children}</p>
         <input
+          ref={inp => {
+            this.inputElement = inp;
+          }}
           type="text"
           onChange={this.props.changed}
           value={this.props.name}
